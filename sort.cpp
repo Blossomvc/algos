@@ -87,7 +87,7 @@ void SelectionSort(auto& Data)
 			
 		}//end of outer loop
 		
-		cout<<endl<<"The number of passes: "<<i+2<<endl;
+		cout<<endl<<"The number of passes: "<<i+1<<endl;
 	
 	cout<<"The Sorted list is :";
 	
