@@ -65,9 +65,9 @@ int main()
 void SelectionSort(auto& Data)
 {
 
-	unsigned int minIndex;
+	unsigned int minIndex, i;
 	
-		for(unsigned int i=0; i<Data.size()-1;i++)
+		for(i=0; i<Data.size()-1;i++)
 		{
 			
 			minIndex=i;
@@ -85,7 +85,9 @@ void SelectionSort(auto& Data)
 				swap(Data[minIndex], Data[i]);
 			}
 			
-		}
+		}//end of outer loop
+		
+		cout<<endl<<"The number of passes: "<<i+2<<endl;
 	
 	cout<<"The Sorted list is :";
 	
