@@ -1,4 +1,4 @@
- #include <iostream>
+#include <iostream>
 #include <cstdlib>//for "exit()" on some systems
 #include <vector>
 #include <string>
@@ -6,22 +6,25 @@
 using namespace std;
 
 /**
-\fn linearSearch
+
 \brief Search data for the first occurrence of key
 \param [in] key The value being searched for
 \param [in] data The data set that will be searched
 \returns location of key if found or -1 if not found
 */
-int linearSearch(auto data, auto key);//prototype
+
+void SelectionSort(auto& data);//prototype
+
+
 
 
 int main()
 {
   vector<string> inputs;
-  string search_key, input;
-  int result;
+  string input;
+ 
 
-   cout<<"Welcome to \"search it\". We first need some input data."<<endl;
+   cout<<endl<<"Welcome to \"sort it\". We first need some input data."<<endl;
    cout<<"We'll assume the inputs do not have any spaces."<<endl<<endl;
    cout<<"To end input type the #-character (followed by Enter)"<<endl<<endl;
 
@@ -40,42 +43,59 @@ int main()
       cout<<endl<<"No input received, quiting..."<<endl<<endl;
        exit(1);//nothing to do but quit program
   }
- 
-   cout<<endl<<"To end input type the #-character (followed by Enter)"<<endl<<endl;
-  cout<<"Enter a value to search for: ";
-
-
-   cin>>search_key;
- 
-    while(search_key != "#")//perform searches until sentinel entered
-    {
-        result = linearSearch(inputs,search_key);
-
-        cout<<"  '"<<search_key<<"' was ";
-
-        if (result == -1)
-          cout<<"not found";
-        else
-          cout<<"found at index "<<result;
-
-
-        cout<<endl<<endl<<"Enter a value to search for: ";
-        cin>>search_key; 
+  else
+  {
+	cout<<"The list of inputs entered are: ";
+	
+	for(unsigned int y=0; y<inputs.size(); y++ )
+	{
+		cout<<inputs[y]<<" ";
     }
+    
+    cout<<endl<<endl;
 
-   cout<<endl<<"Program \"search it\" is now finished."<<endl<<endl;
+  }
+	
+	SelectionSort(inputs);
+    cout<<endl<<"Program \"sort it\" is now finished."<<endl<<endl;
 
     return 0;
 }
 
-int linearSearch (auto Data,auto key)
+void SelectionSort(auto& Data)
 {
-		for(int i=0; i<Data.size();i++)
+
+	unsigned int minIndex;
+	
+		for(unsigned int i=0; i<Data.size()-1;i++)
 		{
-			if (Data[i]== key)
+			
+			minIndex=i;
+			
+			for( unsigned int j=i+1; j<Data.size();j++)
 			{
-					return i;
+				if (Data[j]< Data[minIndex])
+				{
+					minIndex=j;
+				}
 			}
+			
+			if (minIndex != i)
+			{
+				swap(Data[minIndex], Data[i]);
+			}
+			
 		}
-	return -1;
+	
+	cout<<"The Sorted list is :";
+	
+	for(unsigned int x=0; x<Data.size();x++)
+	{
+		
+		cout<<Data[x]<<"  ";
+		
+	}
+	
 }
+
+
