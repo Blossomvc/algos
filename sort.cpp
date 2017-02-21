@@ -13,8 +13,8 @@ using namespace std;
 \returns location of key if found or -1 if not found
 */
 
-void SelectionSort(auto& data);//prototype
-
+int SelectionSort(auto& data);//prototype
+void printSort(auto& data);
 
 
 
@@ -22,6 +22,7 @@ int main()
 {
   vector<string> inputs;
   string input;
+  int pass;
  
 
    cout<<endl<<"Welcome to \"sort it\". We first need some input data."<<endl;
@@ -45,27 +46,20 @@ int main()
   }
   else
   {
-	cout<<"The list of inputs entered are: ";
-	
-	for(unsigned int y=0; y<inputs.size(); y++ )
-	{
-		cout<<inputs[y]<<" ";
-    }
-    
-    cout<<endl<<endl;
-
+	pass= SelectionSort(inputs);
+	cout<<endl<<"The number of passes: "<<pass<<endl<<endl;
   }
+	printSort(inputs);
 	
-	SelectionSort(inputs);
     cout<<endl<<"Program \"sort it\" is now finished."<<endl<<endl;
 
     return 0;
 }
 
-void SelectionSort(auto& Data)
+int SelectionSort(auto& Data)
 {
 
-	unsigned int minIndex, i;
+	unsigned int minIndex, i,val;
 	
 		for(i=0; i<Data.size()-1;i++)
 		{
@@ -85,11 +79,27 @@ void SelectionSort(auto& Data)
 				swap(Data[minIndex], Data[i]);
 			}
 			
+			 val = i+1;
+		
+			if ((val%20000) == 0)
+			{
+				cout<<"The number of passes for each 2 passes is ";
+				cout<<val<<endl;
+			}
+			
 		}//end of outer loop
 		
-		cout<<endl<<"The number of passes: "<<i+1<<endl;
+		
+		
 	
-	cout<<"The Sorted list is :";
+	return val;
+}
+
+void printSort(auto& Data)
+{
+	
+	
+	cout<<"The Sorted list is :"<<endl;
 	
 	for(unsigned int x=0; x<Data.size();x++)
 	{
@@ -97,7 +107,6 @@ void SelectionSort(auto& Data)
 		cout<<Data[x]<<"  ";
 		
 	}
+	cout<<endl<<endl;
 	
 }
-
-
